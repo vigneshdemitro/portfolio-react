@@ -1,0 +1,60 @@
+[
+  {
+    "companyName": "Guidewire Software",
+    "positions": [
+      {
+        "title": "Full Stack Engineer",
+        "year": "From May 24",
+        "description": "Working as a Full Stack Engineer working on a Cyber insurance domain, mentoring junior dev to follow industry standard coding practices. Worked on a new exciting project with new tech stack and technologies which enhanced interactive mode of learning along with building the app"
+      }
+    ],
+    "techStacks": ["Angular", "AWS", "Node.js", "Typescript", "PostgreSQL", "Python", "Teamcity"]
+  },
+  {
+    "companyName": "Acubetech Solutions Pvt Ltd",
+    "positions": [
+      {
+        "title": "Senior Software Engineer",
+        "year": "February 2022 - May 2024",
+        "description": "Worked as a Senior Software Engineer creating reusable react components, building APIs and mentoring juniors to write clean code."
+      }
+    ],
+    "techStacks": ["React.js", "AWS Amplify / Lambda", "Node.js", "PostgreSQL / MySQL"]
+  },
+  {
+    "companyName": "Macroid App Services Pvt Ltd",
+    "positions": [
+      {
+        "title": "Senior Full Stack Web Developer",
+        "year": "September 2021 - February 2022",
+        "description": "Worked as a Senior Full Stack Web Developer in a finance domain(confidential) for a UK based client."
+      },
+      {
+        "title": "Full Stack Web Developer",
+        "year": "July 2020 - September 2021",
+        "description": "Worked as a Full Stack Web Developer in a food delivery app(confidential) for a US based client."
+      }
+    ],
+    "techStacks": ["React.js", "Node.js", "Nest.js", "MongoDB", "AWS EC2"]
+  },
+  {
+    "companyName": "Indigo India Pvt Ltd",
+    "positions": [
+      {
+        "title": "Design Engineer",
+        "year": "January 2017 - March 2019",
+        "description": "Worked as a Design Engineer creating detailed drawings for company's wide range of products."
+      }
+    ]
+  },
+  {
+    "companyName": "MS Design House",
+    "positions": [
+      {
+        "title": "Architectural Draftsman",
+        "year": "March 2016 - November 2016",
+        "description": "Worked as Architectural Draftsman for Senior Architect for the firm to prepare drawings for the project."
+      }
+    ]
+  }
+]

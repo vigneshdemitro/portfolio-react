@@ -1,0 +1,13 @@
+@import 'variables';
+@import "~bootstrap/scss/bootstrap";
+
+@media (max-width: 768px) { /* md and up */
+    .experience-col {
+      margin-bottom: 1rem;
+    }
+  
+    /* Optional: Remove margin from the last item to avoid layout shift */
+    .experience-col:last-child {
+      margin-bottom: 0;
+    }
+  }

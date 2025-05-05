@@ -1,0 +1,59 @@
+[
+  {
+    "name": "React",
+    "level": 70,
+    "type": "framework",
+    "icon": "react",
+    "sortOrder": 2
+  },
+  {
+    "name": "Node",
+    "level": 85,
+    "type": "language",
+    "icon": "node",
+    "sortOrder": 1
+  },
+  {
+    "name": "NestJS",
+    "level": 75,
+    "type": "framework",
+    "icon": "node",
+    "sortOrder": 2
+  },
+  {
+    "name": "Typescript",
+    "level": 80,
+    "type": "language",
+    "icon": "code",
+    "sortOrder": 1
+  },
+  {
+    "name": "Python",
+    "level": 50,
+    "type": "language",
+    "icon": "python",
+    "sortOrder": 1
+  },
+  {
+    "name": "AWS",
+    "level": 50,
+    "type": "cloud",
+    "icon": "aws",
+    "sortOrder": 3
+  },
+  {
+    "name": "Angular",
+    "level": 70,
+    "type": "framework",
+    "icon": "angular",
+    "sortOrder": 2
+  },
+  {
+    "name": "Teamcity",
+    "level": 40,
+    "type": "cloud",
+    "icon": "cloud",
+    "sortOrder": 3
+  }
+
+]

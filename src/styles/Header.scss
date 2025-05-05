@@ -1,0 +1,9 @@
+@import 'variables';
+
+.navbar {
+  cursor: pointer;
+}
+
+.navbar .navbar-toggler {
+  background-color: $primary;
+}
