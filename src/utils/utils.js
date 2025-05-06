@@ -1,37 +1,66 @@
 import experiences from '../assets/data/experiences.json';
 import skills from '../assets/data/skills.json';
 import _about from '../assets/data/about.json';
+import careerHighlights from '../assets/data/career-higlights.json';
+import userDetails from '../assets/data/user-profile.json';
+import moment from 'moment';
 
-const about = { ..._about, skills: skills.map(({ name }) => name ) } ;
+const about = { ..._about, skills: skills.map(({ name }) => name ) };
+const monthFormat = "MM/YYYY";
+const displayFormat = "MMMM YYYY";
 
 const user = {
-    name: 'Vigneshwar Pasupathi',
-    position: 'Full Stack Engineer',
+    ...userDetails,
     experiences,
     skills,
-    totalExperience: [
-        {
-            title: '5+',
-            message: 'Years of Experience'
-        },
-        {
-            title: 'Full Stack',
-            message: 'Integration specialist'
-        },
-        {
-            title: 'Toastmaster',
-            message: 'Leadership Skills'
-        },
-    ],
+    careerHighlights,
     about,
-    contact: {
-        email: 'vigneshdemitro@gmail.com',
-        linkedIn: 'https://www.linkedin.com/in/vigneshwarpasupathi',
-        resumeLink: 'https://drive.google.com/file/d/1Q1h7B9maSzusabVfqN9wtO11CXlFlkzi/view?usp=drive_link',
-        github: 'https://github.com/vigneshdemitro',
+};
+
+const getDate = (dateString) => moment(dateString, monthFormat);
+
+const formatDateRange = ({ startDate, endDate }) => {
+    const start = getDate(startDate);
+    const end = getDate(endDate);
+    const formattedStart  = start.format(displayFormat);
+    const formattedEnd  = end.format(displayFormat);
+
+    if (!endDate) {
+        return `From ${formattedStart} - Present`;
+    }
+
+    return `${formattedStart} - ${formattedEnd}`;
+
+};
+
+const getCompanyExperience = (positions) => {
+    // Calculate total years of experience of a company
+    const { startDate, endDate } = positions.reduce(
+        (acc, pos, index) => {
+          if (index === 0) {
+            acc.endDate = pos.endDate ? getDate(pos.endDate) : moment();
+          }
+          if (index === positions.length - 1) {
+            acc.startDate = getDate(pos.startDate);
+          }
+          return acc;
+        },
+        { startDate: null, endDate: null }
+    );
+
+    const duration = moment.duration(endDate.diff(startDate));
+    const years = duration.years();
+    const months = duration.months();
+
+    if (years > 0) {
+        return `${years} Year${years > 1 ? 's' : ''} ${months} Month${months > 1 ? 's' : ''}`;
+    } else {
+        return `${months} Month${months > 1 ? 's' : ''}`;
     }
 }
 
 export {
-    user
-}
+    user,
+    formatDateRange,
+    getCompanyExperience,
+};

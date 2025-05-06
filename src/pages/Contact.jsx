@@ -28,24 +28,24 @@ const Contact = () => {
                 <Col md={8}>
                     <Card className="mb-4 p-4">
                         <Card.Body>
-                            <p>
+                            {linkedIn && <p>
                                 <FontAwesomeIcon icon={faLinkedin} className="me-2 text-primary" />
                                 <a href={linkedIn} target='_blank' rel="noopener noreferrer">
                                     {linkedIn.split('www.')[1]}
                                 </a>
-                            </p>
-                            <p>
+                            </p>}
+                            {email && <p>
                                 <FontAwesomeIcon icon={faEnvelope} className="me-2 text-primary" />
                                 <a href={`mailto:${email}`} target='_blank' rel="noopener noreferrer">
                                     {email}
                                 </a>
-                            </p>
-                            <p>
+                            </p>}
+                            {resumeLink && <p>
                                 <FontAwesomeIcon icon={faFile} className="me-2 text-primary" />
                                 <a href={resumeLink} target='_blank' rel="noopener noreferrer">
                                     Download Resume
                                 </a>
-                            </p>
+                            </p>}
                         </Card.Body>
                     </Card>
 

@@ -1,30 +1,34 @@
 import React from 'react';
 import { Container, Row, Col, Card, Badge } from 'react-bootstrap';
-import { user } from '../utils/utils';
+import { formatDateRange, getCompanyExperience, user } from '../utils/utils';
 
-const ExperienceCard = ({ companyName, positions, techStacks }) => (
+const ExperienceCard = ({ companyName, positions, skills }) => (
   <Card className="mb-4 shadow-sm text-dark">
     <Card.Body>
 
-      {positions.map((position, index) => (
+      <div className="d-flex justify-content-between align-items-center mb-2">
+        <Card.Title as="h4" className="mb-0 text-primary">{companyName}</Card.Title>
+        <Badge bg="primary" className="me-2 mb-2 text-dark">{getCompanyExperience(positions)}</Badge>
+        {/* <small className="text-dark">{getCompanyExperience(positions)}</small> */}
+        {/* {(index === 0) &&
+          <>
+          </>
+        } */}
+      </div>
+      {positions && positions.length && positions.map((position, index) => (
         <div key={index} className="mb-3">
           <div className="d-flex justify-content-between align-items-center mb-2">
-            {(index === 0) &&
-              <>
-                <Card.Title as="h4" className="mb-0 text-primary">{companyName}</Card.Title>
-                <small className="text-dark">{position.year}</small>
-              </>
-            }
+            <h5 className="mb-1">{position.title}</h5>
+            <h6 className="text-danger fw-bold">{formatDateRange({ startDate: position.startDate, endDate: position.endDate })}</h6>
           </div>
-          <h5 className="mb-1">{position.title}</h5>
           <p className="mb-2">{position.description}</p>
         </div>
       ))}
 
-      {techStacks && techStacks.length > 0 && (
+      {skills && skills.length && (
         <div className="mt-2">
-          {techStacks.map((tech, index) => (
-            <Badge key={index} bg="primary" className="me-2 mb-2 text-dark">{tech}</Badge>
+          {skills.map((tech, index) => (
+            <Badge key={index} bg="secondary" className="me-2 mb-2 text-dark text-decoration-underline">{tech}</Badge>
           ))}
         </div>
       )}
@@ -42,7 +46,7 @@ const Experience = () => (
             key={index}
             companyName={experience.companyName}
             positions={experience.positions}
-            techStacks={experience.techStacks}
+            skills={experience.skills}
           />
         ))}
       </Col>

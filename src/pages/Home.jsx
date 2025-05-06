@@ -8,7 +8,7 @@ import backgroundImage from '../assets/images/bg.jpg';
 const Home = () => {
 
   const iconSize = '2xl';
-  const { contact: { linkedIn, github} } = user;
+  const { contact: { linkedIn, github }, careerHighlights, name, position } = user;
 
   return (
     <div
@@ -25,11 +25,11 @@ const Home = () => {
         <Row className="justify-content-center mb-4">
           <Col lg={8}>
             <h1 className="text-dark">
-              Hello, I'm <span className="text-primary">{user.name}</span>
+              Hello, I'm <span className="text-primary">{name || 'John Doe'}</span>
             </h1>
-            <h2 className="mb-4 text-dark">{user.position}</h2>
+            <h2 className="mb-4 text-dark">{position}</h2>
             <div className="d-flex justify-content-center gap-3">
-              <Button
+              {github && <Button
                 variant="primary"
                 href={github}
                 target="_blank"
@@ -37,8 +37,8 @@ const Home = () => {
                 aria-label="GitHub"
               >
                 <FontAwesomeIcon icon={faGithub} size={iconSize} />
-              </Button>
-              <Button
+              </Button>}
+              {linkedIn && <Button
                 variant="primary"
                 href={linkedIn}
                 target="_blank"
@@ -46,13 +46,13 @@ const Home = () => {
                 aria-label="LinkedIn"
               >
                 <FontAwesomeIcon icon={faLinkedin} size={iconSize} />
-              </Button>
+              </Button>}
             </div>̵
           </Col>
         </Row>
         {/* Bottom Section */}
         <Row className='justify-content-center'>
-          {user.totalExperience.map(({ title, message }, index) => (
+          {careerHighlights.map(({ title, message }, index) => (
             <Col xs={12} sm={8} md={4} className='experience-col'>
               <Card bg='primary' className='text-dark px-2' key={index}>
                 <Card.Body>
