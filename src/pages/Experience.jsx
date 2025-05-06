@@ -9,11 +9,6 @@ const ExperienceCard = ({ companyName, positions, skills }) => (
       <div className="d-flex justify-content-between align-items-center mb-2">
         <Card.Title as="h4" className="mb-0 text-primary">{companyName}</Card.Title>
         <Badge bg="primary" className="me-2 mb-2 text-dark">{getCompanyExperience(positions)}</Badge>
-        {/* <small className="text-dark">{getCompanyExperience(positions)}</small> */}
-        {/* {(index === 0) &&
-          <>
-          </>
-        } */}
       </div>
       {positions && positions.length && positions.map((position, index) => (
         <div key={index} className="mb-3">

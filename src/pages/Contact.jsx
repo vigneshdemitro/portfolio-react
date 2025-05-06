@@ -13,14 +13,6 @@ const Contact = () => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // You can integrate with EmailJS, Formspree, or backend API here
-        // console.log('Form submitted:', form);
-        // alert('Your message has been sent!');
-        setForm({ name: '', email: '', message: '' });
-    };
-
     return (
         <Container className="my-5">
             <h2 className="text-center mb-4 text-dark">Get in touch</h2>
@@ -52,7 +44,13 @@ const Contact = () => {
                     <Card className="p-4">
                         <Card.Body>
                             <Card.Title className='text-primary'>Send a Message</Card.Title>
-                            <Form onSubmit={handleSubmit}>
+                            <Form
+                                name='contact'
+                                method='POST'
+                                data-netlify='true'
+                                netlify
+                            >
+                                <input type="hidden" name="form-name" value="contact" />
                                 <Form.Group className="mb-3" controlId="formName">
                                     <Form.Label className='text-dark'>Name</Form.Label>
                                     <Form.Control
