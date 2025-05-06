@@ -1,32 +1,35 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
+import { Container, Row, Col, Button, Card, ToastContainer, Toast } from 'react-bootstrap';
 import { faEnvelope, faFile } from '@fortawesome/free-solid-svg-icons';
 import { user } from '../utils/utils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
+const initialValue = { name: '', email: '', message: '' };
+
 const Contact = () => {
     const { contact: { email, linkedIn, resumeLink } } = user;
-    const [form, setForm] = useState({ name: '', email: '', message: '' });
+    const [form, setForm] = useState(initialValue);
+    const [showToast, setShowToast] = useState(false);
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    // const handleSubmit = event => {
-    //     event.preventDefault();
-      
-    //     const myForm = event.target;
-    //     const formData = new FormData(myForm);
-    //     console.log('formData', formData);
-    //     fetch('/', {
-    //       method: 'POST',
-    //       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    //       body: new URLSearchParams(formData).toString()
-    //     })
-    //       .then(() => console.log('Form successfully submitted'))
-    //       .catch(error => alert(error));
-    //   };
+    const handleSubmit = event => {
+        event.preventDefault();
+
+        fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(form).toString()
+        })
+            .then(() => {
+                setForm(initialValue);
+                setShowToast(true);
+            })
+            .catch(error => alert(error));
+    };
 
     return (
         <Container className='my-5'>
@@ -59,18 +62,23 @@ const Contact = () => {
                     <Card className='p-4'>
                         <Card.Body>
                             <Card.Title className='text-primary'>Send a Message</Card.Title>
-                            <Form
+                            <form
                                 name='contact'
                                 method='POST'
                                 data-netlify='true'
+                                netlify-honeypot="bot-field"
                                 netlify
-                                onSubmit='submit'
+                                onSubmit={handleSubmit}
                             >
+
                                 <input type='hidden' name='form-name' value='contact' />
-                                <Form.Group className='mb-3' controlId='formName'>
-                                    <Form.Label className='text-dark'>Name</Form.Label>
-                                    <Form.Control
-                                        className='text-dark'
+                                <div hidden>
+                                    <label>Don't fill this out: <input name="bot-field" /></label>
+                                </div>
+                                <div className='mb-3'>
+                                    <label for="name" className='text-dark form-label'>Name</label>
+                                    <input
+                                        className='text-dark form-control'
                                         type='text'
                                         placeholder='Enter your name'
                                         name='name'
@@ -78,12 +86,12 @@ const Contact = () => {
                                         onChange={handleChange}
                                         required
                                     />
-                                </Form.Group>
+                                </div>
 
-                                <Form.Group className='mb-3' controlId='formEmail'>
-                                    <Form.Label className='text-dark'>Email</Form.Label>
-                                    <Form.Control
-                                        className='text-dark'
+                                <div className='mb-3'>
+                                    <label for="email" className='text-dark form-label'>Email</label>
+                                    <input
+                                        className='text-dark form-control'
                                         type='email'
                                         placeholder='Enter your email'
                                         name='email'
@@ -91,13 +99,12 @@ const Contact = () => {
                                         onChange={handleChange}
                                         required
                                     />
-                                </Form.Group>
+                                </div>
 
-                                <Form.Group className='mb-3' controlId='formMessage'>
-                                    <Form.Label className='text-dark'>Message</Form.Label>
-                                    <Form.Control
-                                        className='text-dark'
-                                        as='textarea'
+                                <div className='mb-3'>
+                                    <label for='message' className='text-dark form-label'>Message</label>
+                                    <textarea
+                                        className='text-dark form-control'
                                         rows={4}
                                         placeholder='Type your message here'
                                         name='message'
@@ -105,16 +112,24 @@ const Contact = () => {
                                         onChange={handleChange}
                                         required
                                     />
-                                </Form.Group>
+                                </div>
 
                                 <Button variant='primary' type='submit'>
                                     Send Message
                                 </Button>
-                            </Form>
+                            </form>
                         </Card.Body>
                     </Card>
                 </Col>
             </Row>
+            <ToastContainer position="top-center" className="p-3">
+                <Toast bg="success" onClose={() => setShowToast(false)} show={showToast} delay={3000} autohide>
+                    <Toast.Header>
+                        <strong className="me-auto text-light">Success</strong>
+                    </Toast.Header>
+                    <Toast.Body className="text-light">Message sent successfully!</Toast.Body>
+                </Toast>
+            </ToastContainer>
         </Container>
     );
 };
