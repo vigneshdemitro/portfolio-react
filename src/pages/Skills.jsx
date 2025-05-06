@@ -22,14 +22,14 @@ const Skills = () => {
         return a.name.localeCompare(b.name);
     })
     return (
-        <Container className="my-4">
+        <Container className='my-4'>
             <Card >
                 <Card.Title as='h4' className='text-center mt-4 mb-4 text-dark'>Technical Skills</Card.Title>
                 <Row >
                     {sortedSkills.map((skill) => (
                         <Col key={skill.name} xs={12} md={6} className='mb-4'>
                             <Card.Body>
-                                <Card.Title className="h4 d-flex align-items-center mb-3 text-dark">
+                                <Card.Title className='h4 d-flex align-items-center mb-3 text-dark'>
                                     <FontAwesomeIcon
                                         icon={icons[skill.icon] || faCode}
                                         size='sm'
@@ -40,7 +40,7 @@ const Skills = () => {
                                     now={skill.level}
                                     animated
                                     striped
-                                    variant="info"
+                                    variant='info'
                                 >
                                 </ProgressBar>
                             </Card.Body>

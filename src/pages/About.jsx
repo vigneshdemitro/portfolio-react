@@ -7,12 +7,12 @@ const About = () => {
   const { about: { skills, title, paragraphs } } = user;
 
   return (
-    <Container className="my-5">
-      <Row className="justify-content-center">
+    <Container className='my-5'>
+      <Row className='justify-content-center'>
         <Col xs={12} md={8}>
-          <Card className="shadow-sm">
+          <Card className='shadow-sm'>
             <Card.Body>
-              <Card.Title as="h2" className="mb-4 text-center text-dark">
+              <Card.Title as='h2' className='mb-4 text-center text-dark'>
                 {title}
               </Card.Title>
               {paragraphs.map((text, index) => (
@@ -25,8 +25,8 @@ const About = () => {
                 {skills.map((skill, index) => (
                   <Badge
                     key={index}
-                    bg="primary"
-                    className="me-2 mb-2 text-light"
+                    bg='primary'
+                    className='me-2 mb-2 text-light'
                     pill
                   >
                     {skill}

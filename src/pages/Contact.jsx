@@ -13,35 +13,50 @@ const Contact = () => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
+    // const handleSubmit = event => {
+    //     event.preventDefault();
+      
+    //     const myForm = event.target;
+    //     const formData = new FormData(myForm);
+    //     console.log('formData', formData);
+    //     fetch('/', {
+    //       method: 'POST',
+    //       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    //       body: new URLSearchParams(formData).toString()
+    //     })
+    //       .then(() => console.log('Form successfully submitted'))
+    //       .catch(error => alert(error));
+    //   };
+
     return (
-        <Container className="my-5">
-            <h2 className="text-center mb-4 text-dark">Get in touch</h2>
-            <Row className="justify-content-center">
+        <Container className='my-5'>
+            <h2 className='text-center mb-4 text-dark'>Get in touch</h2>
+            <Row className='justify-content-center'>
                 <Col md={8}>
-                    <Card className="mb-4 p-4">
+                    <Card className='mb-4 p-4'>
                         <Card.Body>
                             {linkedIn && <p>
-                                <FontAwesomeIcon icon={faLinkedin} className="me-2 text-primary" />
-                                <a href={linkedIn} target='_blank' rel="noopener noreferrer">
+                                <FontAwesomeIcon icon={faLinkedin} className='me-2 text-primary' />
+                                <a href={linkedIn} target='_blank' rel='noopener noreferrer'>
                                     {linkedIn.split('www.')[1]}
                                 </a>
                             </p>}
                             {email && <p>
-                                <FontAwesomeIcon icon={faEnvelope} className="me-2 text-primary" />
-                                <a href={`mailto:${email}`} target='_blank' rel="noopener noreferrer">
+                                <FontAwesomeIcon icon={faEnvelope} className='me-2 text-primary' />
+                                <a href={`mailto:${email}`} target='_blank' rel='noopener noreferrer'>
                                     {email}
                                 </a>
                             </p>}
                             {resumeLink && <p>
-                                <FontAwesomeIcon icon={faFile} className="me-2 text-primary" />
-                                <a href={resumeLink} target='_blank' rel="noopener noreferrer">
+                                <FontAwesomeIcon icon={faFile} className='me-2 text-primary' />
+                                <a href={resumeLink} target='_blank' rel='noopener noreferrer'>
                                     Download Resume
                                 </a>
                             </p>}
                         </Card.Body>
                     </Card>
 
-                    <Card className="p-4">
+                    <Card className='p-4'>
                         <Card.Body>
                             <Card.Title className='text-primary'>Send a Message</Card.Title>
                             <Form
@@ -49,49 +64,50 @@ const Contact = () => {
                                 method='POST'
                                 data-netlify='true'
                                 netlify
+                                onSubmit='submit'
                             >
-                                <input type="hidden" name="form-name" value="contact" />
-                                <Form.Group className="mb-3" controlId="formName">
+                                <input type='hidden' name='form-name' value='contact' />
+                                <Form.Group className='mb-3' controlId='formName'>
                                     <Form.Label className='text-dark'>Name</Form.Label>
                                     <Form.Control
                                         className='text-dark'
-                                        type="text"
-                                        placeholder="Enter your name"
-                                        name="name"
+                                        type='text'
+                                        placeholder='Enter your name'
+                                        name='name'
                                         value={form.name}
                                         onChange={handleChange}
                                         required
                                     />
                                 </Form.Group>
 
-                                <Form.Group className="mb-3" controlId="formEmail">
+                                <Form.Group className='mb-3' controlId='formEmail'>
                                     <Form.Label className='text-dark'>Email</Form.Label>
                                     <Form.Control
                                         className='text-dark'
-                                        type="email"
-                                        placeholder="Enter your email"
-                                        name="email"
+                                        type='email'
+                                        placeholder='Enter your email'
+                                        name='email'
                                         value={form.email}
                                         onChange={handleChange}
                                         required
                                     />
                                 </Form.Group>
 
-                                <Form.Group className="mb-3" controlId="formMessage">
+                                <Form.Group className='mb-3' controlId='formMessage'>
                                     <Form.Label className='text-dark'>Message</Form.Label>
                                     <Form.Control
                                         className='text-dark'
-                                        as="textarea"
+                                        as='textarea'
                                         rows={4}
-                                        placeholder="Type your message here"
-                                        name="message"
+                                        placeholder='Type your message here'
+                                        name='message'
                                         value={form.message}
                                         onChange={handleChange}
                                         required
                                     />
                                 </Form.Group>
 
-                                <Button variant="primary" type="submit">
+                                <Button variant='primary' type='submit'>
                                     Send Message
                                 </Button>
                             </Form>
