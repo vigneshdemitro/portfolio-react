@@ -57,10 +57,21 @@ const getCompanyExperience = (positions) => {
     } else {
         return `${months} Month${months > 1 ? 's' : ''}`;
     }
+};
+
+const capitializeWord = (word) => {
+    const _word = String(word);
+    return _word.charAt(0).toUpperCase() + _word.slice(1).toLowerCase();
+};
+
+const capitializeSentence = (sentence) => {
+    return String(sentence).split(' ').map(word => capitializeWord(word)).join(' ');
 }
 
 export {
-    user,
+    capitializeSentence,
+    capitializeWord,
     formatDateRange,
     getCompanyExperience,
+    user,
 };

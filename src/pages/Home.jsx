@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { user } from '../utils/utils';
+import { capitializeSentence, user } from '../utils/utils';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import backgroundImage from '../assets/images/bg.jpg';
 
@@ -56,7 +56,7 @@ const Home = () => {
             <Col xs={12} sm={8} md={4} className='experience-col'>
               <Card bg='primary' className='text-dark px-2' key={index}>
                 <Card.Body>
-                  <Row as='h5' className='text-secondary'>{title.toUpperCase()}</Row>
+                  <Row as='h5' className='text-light'>{capitializeSentence(title)}</Row>
                   <Row>{message}</Row>
                 </Card.Body>
               </Card>
