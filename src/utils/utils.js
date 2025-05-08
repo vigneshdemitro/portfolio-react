@@ -33,7 +33,7 @@ const formatDateRange = ({ startDate, endDate }) => {
 
 };
 
-const getCompanyExperience = (positions) => {
+const getCompanyExperience = (positions, onlyDuration = false) => {
     // Calculate total years of experience of a company
     const { startDate, endDate } = positions.reduce(
         (acc, pos, index) => {
@@ -52,6 +52,10 @@ const getCompanyExperience = (positions) => {
     const years = duration.years();
     const months = duration.months();
 
+    if (onlyDuration) {
+        return duration;
+    }
+
     if (years > 0) {
         return `${years} Year${years > 1 ? 's' : ''} ${months} Month${months > 1 ? 's' : ''}`;
     } else {
@@ -66,7 +70,27 @@ const capitializeWord = (word) => {
 
 const capitializeSentence = (sentence) => {
     return String(sentence).split(' ').map(word => capitializeWord(word)).join(' ');
-}
+};
+
+const getTotalExperience = (companies) => {
+    let totalMonths = 0;
+
+    companies.forEach(company => {
+        const duration = getCompanyExperience(company.positions, true);
+        totalMonths += duration.years() * 12 + duration.months();
+    });
+
+    const totalYears = Math.floor(totalMonths / 12);
+    const remainingMonths = totalMonths % 12;
+
+    if (totalYears > 0) {
+        return `${totalYears}${totalYears > 1 ? '+ Years' : 'Year'}`;
+    } else {
+        return `${remainingMonths} Month${remainingMonths > 1 ? 's' : ''}`;
+    }
+};
+
+const totalExperience = getTotalExperience(user.experiences);
 
 export {
     capitializeSentence,
@@ -74,4 +98,5 @@ export {
     formatDateRange,
     getCompanyExperience,
     user,
+    totalExperience,
 };

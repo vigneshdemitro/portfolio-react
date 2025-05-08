@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { capitializeSentence, user } from '../utils/utils';
+import { capitializeSentence, totalExperience ,user } from '../utils/utils';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import backgroundImage from '../assets/images/bg.jpg';
 
@@ -53,10 +53,10 @@ const Home = () => {
         {/* Bottom Section */}
         <Row className='justify-content-center'>
           {careerHighlights.map(({ title, message }, index) => (
-            <Col xs={12} sm={8} md={4} className='experience-col'>
+            <Col key={index} xs={12} sm={8} md={4} className='experience-col'>
               <Card bg='primary' className='text-dark px-2' key={index}>
                 <Card.Body>
-                  <Row as='h5' className='text-light'>{capitializeSentence(title)}</Row>
+                  <Row as='h5' className='text-light'>{message.includes('Years') ? totalExperience : capitializeSentence(title)}</Row>
                   <Row>{message}</Row>
                 </Card.Body>
               </Card>
