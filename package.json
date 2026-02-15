@@ -47,5 +47,6 @@
   },
   "devDependencies": {
     "sass": "^1.87.0"
-  }
+  },
+  "homepage": "https://vigneshdemitro.github.io/portfolio-react"
 }

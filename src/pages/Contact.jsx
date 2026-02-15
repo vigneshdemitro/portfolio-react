@@ -16,12 +16,13 @@ const intitalStatus = {
 };
 
 const Contact = () => {
-    const { contact: { email, linkedIn, resumeLink } } = user;
+    const { contact: { email, linkedIn } } = user;
     const [form, setForm] = useState(initialValue);
     const [showToast, setShowToast] = useState(false);
     const [status, setStatus] = useState(intitalStatus);
     const formRef = useRef(null);
-
+    const resumeLink = process.env.REACT_APP_RESUME_URL;
+    
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };    
