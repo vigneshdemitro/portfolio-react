@@ -37,7 +37,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          REACT_APP_BASENAME: ${{ vars.PUBLIC_URL }}
+          REACT_APP_BASENAME: ${{ vars.REACT_APP_BASENAME }}
           REACT_APP_RESUME_URL: ${{ vars.REACT_APP_RESUME_URL }}
 
       - name: Setup Pages
