@@ -39,6 +39,9 @@ jobs:
         env:
           REACT_APP_BASENAME: ${{ vars.REACT_APP_BASENAME }}
           REACT_APP_RESUME_URL: ${{ vars.REACT_APP_RESUME_URL }}
+          REACT_APP_EMAIL_JS_PUBLIC_KEY: ${{ secrets.REACT_APP_EMAIL_JS_PUBLIC_KEY }}
+          REACT_APP_EMAIL_JS_SERVICE_ID: ${{ secrets.REACT_APP_EMAIL_JS_SERVICE_ID }}
+          REACT_APP_EMAIL_JS_TEMPLATE_ID: ${{ secrets.REACT_APP_EMAIL_JS_TEMPLATE_ID }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
