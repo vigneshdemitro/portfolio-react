@@ -14,7 +14,7 @@ import './styles/custom.scss'
 
 function App() {
   return (
-    <Router basename={process.env.PUBLIC_URL || '/'}>
+    <Router basename={process.env.REACT_APP_BASENAME || '/'}>
       <div className="app">
         <Header />
         <main className="main-content">
