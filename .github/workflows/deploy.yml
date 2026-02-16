@@ -38,6 +38,7 @@ jobs:
         run: npm run build
         env:
           REACT_APP_BASENAME: ${{ vars.REACT_APP_BASENAME }}
+          PUBLIC_URL: ${{ vars.PUBLIC_URL }}
           REACT_APP_RESUME_URL: ${{ vars.REACT_APP_RESUME_URL }}
           REACT_APP_EMAIL_JS_PUBLIC_KEY: ${{ secrets.REACT_APP_EMAIL_JS_PUBLIC_KEY }}
           REACT_APP_EMAIL_JS_SERVICE_ID: ${{ secrets.REACT_APP_EMAIL_JS_SERVICE_ID }}
