@@ -4,11 +4,13 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { capitializeSentence, totalExperience ,user } from '../utils/utils';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import backgroundImage from '../assets/images/bg.jpg';
+import { faFileLines } from '@fortawesome/free-solid-svg-icons';
 
 const Home = () => {
 
   const iconSize = '2xl';
   const { contact: { linkedIn, github }, careerHighlights, name, position } = user;
+  const resumeLink = process.env.REACT_APP_RESUME_URL;
 
   return (
     <div
@@ -47,7 +49,22 @@ const Home = () => {
               >
                 <FontAwesomeIcon icon={faLinkedin} size={iconSize} />
               </Button>}
-            </div>̵
+            </div>
+          </Col>
+        </Row>
+        <Row className='justify-content-center mb-4'>
+          <Col lg={8} className='d-flex justify-content-center'>
+            {resumeLink && <Button
+              variant='link'
+              href={resumeLink}
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='Resume'
+              className='d-flex flex-column align-items-center gap-1'
+            >
+              <FontAwesomeIcon icon={faFileLines} size={iconSize} />
+              Download Resume
+            </Button>}
           </Col>
         </Row>
         {/* Bottom Section */}

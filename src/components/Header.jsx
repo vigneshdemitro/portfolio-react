@@ -10,7 +10,7 @@ const Header = () => {
   const navItems = [
     { path: '/home', label: 'Home' },
     { path: '/about', label: 'About' },
-    { path: '/experience', label: 'Experience' },
+    { path: 'https://timeline.vigneshdemitro.work', label: 'Experience', external: true },
     { path: '/skills', label: 'Skills' },
     { path: '/contact', label: 'Contact' },
   ]
@@ -25,11 +25,17 @@ const Header = () => {
         <Navbar.Toggle onClick={() => setExpanded(expanded ? false : 'expanded')} />
         <Navbar.Collapse>
           <Nav className="ms-auto">
-            {navItems.map(({ path, label }) => (
+            {navItems.map(({ path, label, external }) => (
               <Nav.Item key={path}>
-                <Nav.Link as={Link} to={path} className={`${location.pathname === path ? 'text-primary active' : 'text-dark'}`} onClick={() => setExpanded(false)}>
-                  {label}
-                </Nav.Link>
+                {external ? (
+                  <Nav.Link href={path} target="_blank" rel="noopener noreferrer" className="text-dark" onClick={() => setExpanded(false)}>
+                    {label}
+                  </Nav.Link>
+                ) : (
+                  <Nav.Link as={Link} to={path} className={`${location.pathname === path ? 'text-primary active' : 'text-dark'}`} onClick={() => setExpanded(false)}>
+                    {label}
+                  </Nav.Link>
+                )}
               </Nav.Item>
             ))}
           </Nav>
